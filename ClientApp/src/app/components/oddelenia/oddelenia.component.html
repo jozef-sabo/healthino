@@ -1,0 +1,12 @@
+<div id="container">
+    <div class="page_title">
+        <h2>Vyberte oddelenie</h2>
+    </div>
+    
+    <div id="oddelenia">
+        <div class="oddelenie" *ngFor="let oddelenieNaVyber of oddelenia" (click)="istNaOddelenie(oddelenieNaVyber)">
+            <p>{{oddelenieNaVyber}}</p>
+        </div>   
+    </div>
+     
+</div>

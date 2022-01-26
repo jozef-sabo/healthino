@@ -1,0 +1,11 @@
+<div id="pacienti_container">
+    <div class="page_title">
+        <h2>Vyberte pacienta</h2>
+    </div>
+    <div id="pacienti_list">
+            <div class="pacient" *ngFor="let pacientNaVyber of oddelenia_pacienti[oddelenie]" (click)="istNaPacienta(pacientNaVyber)">
+                <p class="meno_pacienta">{{pacientNaVyber}}</p>
+                <div class="stav"></div>
+            </div>
+    </div>  
+</div>

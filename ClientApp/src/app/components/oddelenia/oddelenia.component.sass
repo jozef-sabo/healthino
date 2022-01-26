@@ -1,0 +1,28 @@
+#container 
+    display: grid
+    grid-auto-flow: row
+    grid-template-rows: 1fr 9fr
+    grid-template-areas: "title" "oddelenia"
+    height: 100vh
+    width: 100vw   
+    #title
+        grid-area: title
+    #oddelenia  
+        grid-area: oddelenia
+        display: flex
+        align-items: center
+        flex-direction: column
+        .oddelenie
+            display: flex
+            flex-direction: row
+            height: 25vh
+            width: 90vw
+            margin-bottom: 4vh
+            align-items: center
+            justify-content: center
+            border-radius: 24px
+            background-color: #FFFFFF
+            box-shadow: 0 10px 15px 8px rgb(0 0 0 / 3%)
+            p
+                font-size: 1.2em
+                font-weight: 600
