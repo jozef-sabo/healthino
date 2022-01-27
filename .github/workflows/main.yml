@@ -1,0 +1,43 @@
+﻿name: Autotests
+
+on: [push]
+
+jobs:
+  build:
+    name: Application Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK 6.0.x
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '6.0.x'
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+      - name: Test
+        run: dotnet test --no-restore --verbosity normal
+  
+  publish:
+    name: Publish to Server
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET Core SDK 6.0.x
+        uses: actions/setup-dotnet@v1.7.2
+        with:
+          dotnet-version: '6.0.x'
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Publish
+        run: dotnet publish --output bin/publish --framework net6.0 --no-self-contained
+      - name: Execute SSH commmands on remote server
+        uses: JimCronqvist/action-ssh@0.1.1
+        with:
+          hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
+          privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY}}
