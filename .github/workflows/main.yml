@@ -16,9 +16,9 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build healthino.csproj --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test healthino.csproj --no-restore --verbosity normal
   
   publish:
     name: Publish to Server
@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Publish
-        run: dotnet publish --output bin/publish --framework net6.0 --no-self-contained
+        run: dotnet publish ./healthino.csproj --output bin/publish --framework net6.0 --no-self-contained
       - name: Execute SSH commmands on remote server
         uses: JimCronqvist/action-ssh@0.1.1
         with:
