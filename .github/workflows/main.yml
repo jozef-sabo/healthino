@@ -40,4 +40,4 @@ jobs:
         with:
           hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
           privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY}}
+          command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY) }}
