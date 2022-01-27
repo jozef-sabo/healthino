@@ -50,7 +50,7 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           SOURCE: "bin/publish"
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.USER_USER }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
           TARGET: ${{ format('{0}/staging', secrets.SERVER_TARGET_DIRECTORY) }}
 
       - name: Deploy to production server
