@@ -35,9 +35,27 @@ jobs:
         run: dotnet restore ./healthino.csproj
       - name: Publish
         run: dotnet publish ./healthino.csproj --output bin/publish --framework net6.0 --no-self-contained
-      - name: Execute SSH commmands on remote server
+
+
+      - name: Prepare staging server
         uses: JimCronqvist/action-ssh@0.1.1
         with:
           hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
           privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY) }}
+      
+      - name: Copy files to staging server
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          SOURCE: "bin/publish"
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.USER_USER }}
+          TARGET: ${{ format('{0}/staging', secrets.SERVER_TARGET_DIRECTORY) }}
+
+      - name: Deploy to production server
+        uses: JimCronqvist/action-ssh@0.1.1
+        with:
+          hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
+          privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          command: ${{ format('sh {0}/deploy.sh', secrets.SERVER_TARGET_DIRECTORY) }}
