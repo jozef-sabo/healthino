@@ -21,7 +21,7 @@ jobs:
         run: dotnet test healthino.csproj --no-restore --verbosity normal
   
   publish:
-    name: Publish to Server
+    name: Deploy to Server
     needs: build
     runs-on: ubuntu-latest
     
@@ -43,15 +43,15 @@ jobs:
           hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
           privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY) }}
-      
+
       - name: Copy files to staging server
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          SOURCE: "bin/publish"
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          TARGET: ${{ format('{0}/staging', secrets.SERVER_TARGET_DIRECTORY) }}
+        uses: siva1024/scp-deployer@latest
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          source: "bin/publish/*"
+          target: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
 
       - name: Deploy to production server
         uses: JimCronqvist/action-ssh@0.1.1
