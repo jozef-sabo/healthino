@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "healthio", "healthio.csproj", "{C0644CA2-06AB-4D94-B94C-B269A488CC51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "healthino", "healthino.csproj", "{C0644CA2-06AB-4D94-B94C-B269A488CC51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace healthio.Controllers;
+namespace healthino.Controllers;
 
 [ApiController]
 [Route("[controller]")]

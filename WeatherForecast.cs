@@ -1,4 +1,4 @@
-namespace healthio;
+namespace healthino;
 
 public class WeatherForecast
 {

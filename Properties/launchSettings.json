@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "healthio": {
+    "healthino": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7059;http://localhost:5059",
