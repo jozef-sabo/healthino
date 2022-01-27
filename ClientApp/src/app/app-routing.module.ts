@@ -1,26 +1,26 @@
-import { PodrobnostiComponent } from './components/podrobnosti/podrobnosti.component';
-import { PacientiComponent } from './components/pacienti/pacienti.component';
-import { HistoriaComponent } from './components/historia/historia.component';
-import { OddeleniaComponent } from './components/oddelenia/oddelenia.component';
+import { DetailsComponent } from './components/details/details.component';
+import { PatientsComponent } from './components/patients/patients.component';
+import { HistoryComponent } from './components/history/history.component';
+import { DepartmentsComponent } from './components/departments/departments.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 {
   path : "",
-  component : OddeleniaComponent,
+  component : DepartmentsComponent,
 },
 {
-  path : "pacienti",
-  component : PacientiComponent,
+  path : "patients",
+  component : PatientsComponent,
 },
 {
-  path : "podrobnosti",
-  component : PodrobnostiComponent,
+  path : "details",
+  component : DetailsComponent,
 },
 {
-  path : "historia",
-  component : HistoriaComponent,
+  path : "history",
+  component : HistoryComponent,
 },
 ];
 

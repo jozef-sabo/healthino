@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AktualneOddelenieService } from './aktualne-oddelenie.service';
+import { CurrentDepartmentService } from './current-department.service';
 
 describe('AktualneZobrazenieService', () => {
-  let service: AktualneOddelenieService;
+  let service: CurrentDepartmentService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AktualneOddelenieService);
+    service = TestBed.inject(CurrentDepartmentService);
   });
 
   it('should be created', () => {

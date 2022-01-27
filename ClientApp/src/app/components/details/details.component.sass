@@ -1,0 +1,26 @@
+#details_container
+    display: grid
+    height: 100vh
+    width: 100vw
+    grid-auto-flow: row
+    grid-template-rows: 10vh 30vh 20vh
+    grid-template-areas: "title" "personal_information" "pulse" "body_temperature" 
+    overflow-y: scroll
+    justify-content: center
+    justify-items: center
+    gap: 2vh
+    .page_title
+        grid-area: title
+    #personal_information
+        display: grid
+        grid-auto-flow: row
+        /*.tableGrid
+            display: grid
+            grid-template-columns: 1fr 1fr
+            p:nth-of-type(2n+1)
+                background-color: red*/
+        table
+            th
+                text-align: start
+            td
+                text-align: end

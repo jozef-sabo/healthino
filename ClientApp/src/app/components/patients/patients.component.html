@@ -1,0 +1,11 @@
+<div id="patients_container">
+    <div class="page_title">
+        <h2>Vyberte pacienta</h2>
+    </div>
+    <div id="patients_list">
+            <div class="patient" *ngFor="let patientAvailable of patients_by_department[department]" (click)="choosePatient(patientAvailable)">
+                <p class="patient_name">{{patientAvailable}}</p>
+                <div class="condition"></div>
+            </div>
+    </div>  
+</div>

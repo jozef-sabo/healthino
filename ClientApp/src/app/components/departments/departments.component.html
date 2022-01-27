@@ -1,0 +1,11 @@
+<div id="container">
+    <div class="page_title">
+        <h2>Vyberte oddelenie</h2>
+    </div>
+    
+    <div id="departments">
+        <div class="department" *ngFor="let departmentOption of departments" (click)="chooseDepartment(departmentOption)">
+            <p>{{departmentOption}}</p>
+        </div>   
+    </div>  
+</div>

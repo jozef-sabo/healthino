@@ -1,4 +1,4 @@
-#pacienti_container
+#patients_container
     display: grid
     grid-auto-flow: row
     grid-template-rows: 1fr 9fr
@@ -7,13 +7,13 @@
     width: 100vw
     .page_title
         grid-area: title
-    #pacienti_list
+    #patients_list
         grid-area: pacienti
         display: flex
         flex-direction: column
         overflow-y: scroll 
         align-items: center
-        .pacient
+        .patient
             height: 8vh
             width: 90vw
             background-color: red
@@ -25,10 +25,11 @@
             justify-content: space-between
             background-color: #FFFFFF
             box-shadow: 0 10px 15px 8px rgb(0 0 0 / 3%)
-            .meno_pacienta
+            .patient_name
                 margin-left: 6vw
                 font-weight: 600
-            .stav
+                margin-bottom: 0
+            .condition
                 height: 2vh
                 width: 2vh
                 border-radius: 50%
