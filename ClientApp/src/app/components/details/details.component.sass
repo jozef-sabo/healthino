@@ -1,3 +1,5 @@
+$accent_color : #E3FDFA
+
 #details_container
     display: grid
     height: 100vh
@@ -10,6 +12,7 @@
     justify-items: center
     .page_title
         grid-area: title
+    
     #details
         display: grid
         grid-auto-flow: row
@@ -30,6 +33,7 @@
         #personal_information
             display: grid
             grid-auto-flow: row
+            grid-template-rows: 4vh 
             position: relative
             table
                 z-index: 2
@@ -41,17 +45,16 @@
                     font-size: 0.9em  
             .highlight
                 position: absolute
-                height: 65%
+                height: calc( 100% - 8vh )
                 width: 30%
                 margin-right: 3vw
                 margin-bottom: 2vh
                 border-radius: 24px  
-                background-color: #E3FDFA
+                background-color: $accent_color
                 align-self: flex-end
                 justify-self: right
                 z-index: 1
-                
-                
+                        
         #pulse
             display: grid
             grid-template-areas: "title data"
@@ -68,4 +71,41 @@
                 #pulse_data_pulse
                     font-size: 3em
                     font-weight: 700
-                    
+
+        #temperatures
+            display: grid
+            grid-auto-flow: row
+            grid-template-rows: 4vh 
+            position: relative
+            margin-bottom: 12vh
+            .highlight
+                    position: absolute
+                    height: calc( 100% - 10vh )
+                    width: 30%
+                    margin-right: 3vw
+                    margin-bottom: 2vh
+                    border-radius: 24px  
+                    background-color: $accent_color
+                    align-self: flex-end
+                    justify-self: right
+                    z-index: 1
+            .temperatures_day
+                width: 100%
+                border-bottom: 1px solid #CCCCCC
+                margin-top: 1vh
+                z-index: 2
+                h4
+                    margin-bottom: 0
+                    font-size: 1em
+                    font-weight: 700
+                    letter-spacing: 1px
+                table
+                    width: 100%
+                    margin-bottom: 0
+                    font-size: 0.9em
+                    td:nth-of-type(2n+1)
+                        text-align: start  
+                    td:nth-of-type(2n)
+                        text-align: end
+            .temperatures_day:last-of-type
+                border-bottom: none

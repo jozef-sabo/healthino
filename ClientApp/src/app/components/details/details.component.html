@@ -23,5 +23,18 @@
                 <p id="pulse_data_pulse">67</p>
             </div>
         </div>
+        <div id="temperatures" class="card">
+            <div class="highlight"></div>
+            <h2>Telesná Teplota</h2>
+            <div class="temperatures_day" *ngFor="let day of ['Pondelok','Nedela','Sobota']">
+                <h4>{{day}}</h4>
+                <table>
+                    <tr><td>14:00</td><td>36.5 °C</td></tr>
+                    <tr><td>12:00</td><td>37.0 °C</td></tr>
+                    <tr><td>10:00</td><td>38.1 °C</td></tr>
+                    <tr><td>8:00</td><td>37.2 °C</td></tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
