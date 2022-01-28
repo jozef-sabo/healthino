@@ -1,13 +1,27 @@
 <div id="details_container">
-    <h2 class="page_title">{{patients[patient]}}</h2>
-    <div id="personal_information">
-        <h2>Osobné údaje</h2>
-        <table id="personal_information_table">
-            <tr><th>Vek</th><td>46 rokov</td></tr> 
-            <tr><th>Pohlavie</th><td>Žena</td></tr>
-            <tr><th>Výška</th><td>160cm</td></tr>
-            <tr><th>Váha</th><td>52kg</td></tr>
-            <tr><th>Krvná skupina</th><td>A</td></tr>
-        </table>
+    <div class="page_title">
+        <h2>{{patients[patient]}}</h2>
+    </div>
+    <div id="details">
+        <div id="personal_information" class="card">
+            <div class="highlight"></div>
+            <h2>Osobné údaje</h2>
+            <table id="personal_information_table">
+                <tr><th>Vek</th><td>46 rokov</td></tr> 
+                <tr><th>Pohlavie</th><td>Žena</td></tr>
+                <tr><th>Výška</th><td>160cm</td></tr>
+                <tr><th>Váha</th><td>52kg</td></tr>
+                <tr><th>Krvná skupina</th><td>A</td></tr>
+            </table>     
+        </div>
+        <div id="pulse" class="card">
+            <div id="pulse_title">
+                <h2>Pulz</h2>
+            </div>
+            <div id="pulse_data">
+                <p id="pulse_data_title">posledné meranie</p>
+                <p id="pulse_data_pulse">67</p>
+            </div>
+        </div>
     </div>
 </div>
