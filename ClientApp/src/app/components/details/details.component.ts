@@ -1,6 +1,7 @@
 import { CurrentPatientService } from '../../current-patient.service';
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -14,6 +15,6 @@ export class DetailsComponent implements OnInit {
   constructor(private current_patient_service : CurrentPatientService) { }
 
   ngOnInit(): void {
-  this.current_patient_service.current_patient.subscribe(patient => this.patient = patient)
+  this.current_patient_service.current_patient.subscribe(patient => this.patient = patient) 
   }
 }
