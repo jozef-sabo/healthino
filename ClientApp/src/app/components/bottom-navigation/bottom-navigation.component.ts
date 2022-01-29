@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-bottom-navigation',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BottomNavigationComponent implements OnInit {
 
-  constructor() { }
+  currentPage : string = "/"
+
+  constructor(private router : Router) {
+    router.events.subscribe( event => {
+      if(event instanceof NavigationEnd){
+        this.currentPage = this.router.url;
+      }
+    })
+   }
 
   ngOnInit(): void {
+  
   }
 
 }

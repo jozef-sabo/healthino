@@ -1,11 +1,12 @@
+
 <div id="bottom_navigation_container">
-    <button mat-flat-button routerLink="">
+    <button mat-flat-button routerLink="" [ngClass]="{'selected' : currentPage === '/'}">
         <mat-icon>home</mat-icon>
     </button>
-    <button mat-flat-button routerLink="patients">
+    <button mat-flat-button routerLink="patients" [ngClass]="{'selected' : currentPage === '/patients'}">
         <mat-icon>reorder</mat-icon>
     </button>
-    <button mat-flat-button routerLink="history">
+    <button mat-flat-button routerLink="history" [ngClass]="{'selected' : (currentPage === '/history')}">
         <mat-icon>history</mat-icon>
     </button>
 </div>
