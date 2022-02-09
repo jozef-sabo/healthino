@@ -10,6 +10,7 @@ import { MaterialModule } from './material/material.module';
 import { PatientsComponent } from './components/patients/patients.component';
 import { DetailsComponent } from './components/details/details.component';
 import { HistoryComponent } from './components/history/history.component';
+import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HistoryComponent } from './components/history/history.component';
     BottomNavigationComponent,
     PatientsComponent,
     DetailsComponent,
-    HistoryComponent
+    HistoryComponent,
+    TopNavigationComponent
   ],
   imports: [
     BrowserModule,

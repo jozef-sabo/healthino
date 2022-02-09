@@ -1,0 +1,16 @@
+<div id="navbar">
+    <div id="logo" routerLink="patients">
+        <h2>healthino</h2>
+    </div>
+    <div id="right_section">
+        <button mat-flat-button routerLink="" [ngClass]="{'selected' : currentPage === '/'}">
+            <mat-icon>home</mat-icon>
+        </button>
+        <button mat-flat-button routerLink="patients" [ngClass]="{'selected' : currentPage === '/patients'}">
+            <mat-icon>person_search</mat-icon>
+        </button>
+        <button mat-flat-button routerLink="history" [ngClass]="{'selected' : (currentPage === '/history')}">
+            <mat-icon>history</mat-icon>
+        </button>
+    </div>
+</div>

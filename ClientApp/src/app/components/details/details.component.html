@@ -1,8 +1,12 @@
 <div id="details_container">
-    <div class="page_title">
+    <div class="page_title" *ngIf="!desktop">
         <h2>{{patients[patient]}}</h2>
     </div>
+    
     <div id="details">
+        <div id="patient_name_desktop" class="card" *ngIf="desktop">
+            <h2>{{patients[patient]}}</h2>
+        </div>
         <div id="personal_information" class="card">
             <div class="highlight"></div>
             <h2>Osobné údaje</h2>
@@ -33,6 +37,7 @@
                     <tr><td>12:00</td><td>37.0 °C</td></tr>
                     <tr><td>10:00</td><td>38.1 °C</td></tr>
                     <tr><td>8:00</td><td>37.2 °C</td></tr>
+                    
                 </table>
             </div>
         </div>

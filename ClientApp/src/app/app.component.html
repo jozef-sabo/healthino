@@ -1,2 +1,3 @@
+<app-top-navigation *ngIf="desktop"></app-top-navigation>
 <router-outlet></router-outlet>
-<app-bottom-navigation></app-bottom-navigation>
+<app-bottom-navigation *ngIf="!desktop"></app-bottom-navigation>

@@ -1,6 +1,14 @@
 <div id="patients_container">
-    <div class="page_title">
-        <h2>Vyberte pacienta</h2>
+    <div class="search">
+        <form>
+            <mat-form-field class="searchFormField">
+                <mat-label>
+                    Hľadať pacienta
+                </mat-label>
+                <input matInput>
+            </mat-form-field>
+        </form>
+    <mat-icon>search</mat-icon>
     </div>
     <div id="patients_list">
             <div class="patient" *ngFor="let patientAvailable of patients_by_department[department]" (click)="choosePatient(patientAvailable)">

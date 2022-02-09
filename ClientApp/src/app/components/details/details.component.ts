@@ -14,7 +14,16 @@ export class DetailsComponent implements OnInit {
 
   constructor(private current_patient_service : CurrentPatientService) { }
 
+  desktop : boolean = false;
+
   ngOnInit(): void {
   this.current_patient_service.current_patient.subscribe(patient => this.patient = patient) 
+  
+  if (window.screen.width >= 768) {
+    this.desktop = true;
+  }else{
+    this.desktop = false;
+  }
+
   }
 }

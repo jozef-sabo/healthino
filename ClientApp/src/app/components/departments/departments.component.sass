@@ -1,12 +1,36 @@
 #container 
     display: grid
     grid-auto-flow: row
-    grid-template-rows: 1fr 9fr
-    grid-template-areas: "title" "oddelenia"
+    grid-template-rows: 14% 1fr
+    grid-template-areas:"search" "departments"
     height: 100%
     width: 100%
+    overflow-x: hidden
+    .search
+        grid-area: search
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        place-self: center
+        width: fit-content
+        height: fit-content
+        padding: 0.5vh 4vh
+        background-color: white
+        border-radius: 22px
+        box-shadow: 0 10px 15px 0 rgba(0,0,0,3%)
+        form
+            width: fit-content
+            height: 5vh
+            align-items: center
+            ::ng-deep .mat-form-field-underline
+                display: none
+        mat-label
+            color: #9D9D9D
+    .searchFormField
+        width: 66vw
     #departments  
-        grid-area: oddelenia
+        grid-area: departments
         display: flex
         align-items: center
         flex-direction: column
@@ -26,3 +50,22 @@
                 font-size: 1.2em
                 font-weight: 600
                 margin-bottom: 0
+        .department:hover
+            background-color: rgba(0,0,0,1%)
+            cursor: pointer
+
+@media only screen and (min-width: 768px)
+    #container
+        height: 95%
+        .searchFormField
+            width: 30vw
+        #departments  
+            width: 100%
+            display: grid 
+            grid-template-columns: 1fr 1fr 1fr
+            justify-items: center
+            align-self: start
+            .department
+                width: 26vw
+                height: 14vw
+                margin: 4vh

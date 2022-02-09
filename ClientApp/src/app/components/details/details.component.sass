@@ -7,7 +7,7 @@ $accent_color : #E3FDFA
     grid-auto-flow: row
     grid-template-rows: 10vh 1fr
     grid-template-areas: "title" "details"
-    overflow-y: scroll
+    overflow-y: auto
     justify-content: center
     justify-items: center
     .page_title
@@ -109,3 +109,45 @@ $accent_color : #E3FDFA
                         text-align: end
             .temperatures_day:last-of-type
                 border-bottom: none
+@media only screen and (min-width: 768px)
+    #details_container
+        height: 95%
+        #details
+            justify-items: center
+            width: 88vw
+            gap: 5vh 0vh
+            grid-template-columns: 1fr 1fr
+            margin-top: 5vh
+            .card
+                width: 22vw
+            #patient_name_desktop
+                grid-column-start: 1
+                grid-row-start: 1
+                grid-column-end: 1
+                grid-row-end: 2
+                display: flex
+                align-items: center
+                height: 6vh
+                padding-top: 2vh 
+                padding-bottom: 2vh
+            #personal_information
+                grid-column-start: 1
+                grid-row-start: 2
+                grid-column-end: 1
+                grid-row-end: 3
+                padding-top: 4vh 
+                padding-bottom: 4vh
+            #pulse
+                grid-column-start: 1
+                grid-row-start: 3
+                grid-column-end: 1
+                grid-row-end: 4
+                padding-top: 4vh 
+                padding-bottom: 4vh
+            #temperatures
+                grid-column-start: 2
+                grid-row-start: 1
+                grid-column-end: 2
+                grid-row-end: 5
+                padding-top: 4vh 
+                padding-bottom: 4vh

@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'healthino';
+  
+  desktop : boolean = false;
+
+  ngOnInit() {
+    if (window.screen.width >= 768) {
+      this.desktop = true;
+    }else{
+      this.desktop = false;
+    }
+  }
 }

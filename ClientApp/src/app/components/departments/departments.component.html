@@ -1,8 +1,15 @@
-<div id="container">
-    <div class="page_title">
-        <h2>Vyberte oddelenie</h2>
+<div id="container">    
+    <div class="search">
+        <form>
+            <mat-form-field class="searchFormField">
+                <mat-label>
+                    Hľadať oddelenie
+                </mat-label>
+                <input matInput>
+            </mat-form-field>
+        </form>
+    <mat-icon>search</mat-icon>
     </div>
-    
     <div id="departments">
         <div class="department" *ngFor="let departmentOption of departments" (click)="chooseDepartment(departmentOption)">
             <p>{{departmentOption}}</p>
