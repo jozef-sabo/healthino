@@ -46,4 +46,3 @@ jobs:
           password: ${{secrets.SERVER_PASSWORD}}
           pre_upload: echo "sh ./prepare.sh"
           post_upload: echo "sh ./deploy.sh"
-          scp_options: -v
