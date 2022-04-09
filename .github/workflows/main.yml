@@ -35,29 +35,15 @@ jobs:
         run: dotnet restore ./healthino.csproj
       - name: Publish
         run: dotnet publish ./healthino.csproj --output bin/publish --framework net6.0 --no-self-contained
-      
-      - name: Prepare staging server
-        uses: matheusvanzan/sshpass-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          run: sh ./prepare.sh
 
-      - name: Copy files to staging server
-        uses: siva1024/scp-deployer@latest
+      - name: Prepare and copy to staging, deploy to production
+        uses: mdallasanta/ssh-scp-deploy@{version}
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          source: "bin/publish/*"
-          target: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
-
-
-      - name: Deploy to production server
-        uses: matheusvanzan/sshpass-action@v1
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          run: sh ./deploy.sh
+          local: 'bin/publish/*'
+          remote: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
+          host: ${{secrets.SERVER_HOST}}
+          user: ${{secrets.SERVER_USER}}
+          password: ${{secrets.SERVER_PASSWORD}}
+          pre_upload: echo "sh ./prepare.sh"
+          post_upload: echo "sh ./deploy.sh"
+          scp_options: -v
