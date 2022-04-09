@@ -44,5 +44,5 @@ jobs:
           host: ${{secrets.SERVER_HOST}}
           user: ${{secrets.SERVER_USER}}
           password: ${{secrets.SERVER_PASSWORD}}
-          pre_upload: echo "sh ./prepare.sh"
-          post_upload: echo "sh ./deploy.sh"
+          pre_upload: sh ./prepare.sh
+          post_upload: sh ./deploy.sh
