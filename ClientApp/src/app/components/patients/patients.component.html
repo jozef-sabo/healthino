@@ -11,9 +11,11 @@
     <mat-icon>search</mat-icon>
     </div>
     <div id="patients_list">
-            <div class="patient" *ngFor="let patientAvailable of patients_by_department[department]" (click)="choosePatient(patientAvailable)">
-                <p class="patient_name">{{patientAvailable}}</p>
+        <ng-container *ngFor="let patientAvailable of patients">    
+            <div class="patient" *ngIf="departmentToDisplay.includes(patientAvailable.departmentID)" (click)="choosePatient(patientAvailable)">
+                <p class="patient_name">{{patientAvailable.name}}</p>
                 <div class="condition"></div>
             </div>
+        </ng-container>
     </div>  
 </div>

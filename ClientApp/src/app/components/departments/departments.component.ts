@@ -1,4 +1,5 @@
-import { CurrentDepartmentService } from '../../current-department.service';
+import { CurrentDepartmentService } from './../../services/current-department.service';
+import { DepartmentsDataService } from './../../services/departments-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
@@ -10,18 +11,21 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class DepartmentsComponent implements OnInit {
 
-  departments = ["Oddelenie č.1","Oddelenie č.2"]
-  department! : number;
+  departments : any
+  department! : number
 
-  constructor(private current_department_service : CurrentDepartmentService, private router : Router) { }
+  constructor(private current_department_service : CurrentDepartmentService,
+    private _departmentsDataService : DepartmentsDataService,
+    private router : Router) { }
 
   ngOnInit(): void {
     this.current_department_service.current_department.subscribe(department => this.department = department)
+    this.departments = this._departmentsDataService.getDepartments()
   }
 
-  chooseDepartment(departmentOption:string){
+  chooseDepartment(departmentAvailable:any){
     this.router.navigate(['patients'])
-    let departmentID = this.departments.indexOf(departmentOption)
+    let departmentID = departmentAvailable.id
     this.current_department_service.zmenitOddelenie(departmentID)
   }
 }

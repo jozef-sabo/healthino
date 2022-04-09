@@ -1,3 +1,4 @@
+import { DepartmentsDataService } from './services/departments-data.service';
 import { DepartmentsComponent } from './components/departments/departments.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +29,7 @@ import { TopNavigationComponent } from './components/top-navigation/top-navigati
     BrowserAnimationsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [DepartmentsDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

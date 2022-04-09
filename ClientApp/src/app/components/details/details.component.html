@@ -1,11 +1,11 @@
 <div id="details_container">
     <div class="page_title" *ngIf="!desktop">
-        <h2>{{patients[patient]}}</h2>
+        <h2>{{patient.name}}</h2>
     </div>
     
     <div id="details">
         <div id="patient_name_desktop" class="card" *ngIf="desktop">
-            <h2>{{patients[patient]}}</h2>
+            <h2>{{patient.name}}</h2>
         </div>
         <div id="personal_information" class="card">
             <div class="highlight"></div>

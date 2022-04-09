@@ -9,12 +9,18 @@ export class AppComponent {
   title = 'healthino';
   
   desktop : boolean = false;
-
-  ngOnInit() {
-    if (window.screen.width >= 768) {
-      this.desktop = true;
-    }else{
-      this.desktop = false;
-    }
+  
+  
+  appResized() {
+    this.desktop = window.innerWidth >= 768 ? true : false
   }
+  
+  ngOnInit() {
+    this.appResized()
+    window.addEventListener('resize', this.appResized);
+  }
+  
 }
+
+
+

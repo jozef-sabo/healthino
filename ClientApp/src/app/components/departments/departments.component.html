@@ -11,8 +11,8 @@
     <mat-icon>search</mat-icon>
     </div>
     <div id="departments">
-        <div class="department" *ngFor="let departmentOption of departments" (click)="chooseDepartment(departmentOption)">
-            <p>{{departmentOption}}</p>
+        <div class="department" *ngFor="let departmentAvailable of departments" (click)="chooseDepartment(departmentAvailable)">
+            <p>{{departmentAvailable.name}}</p>
         </div>   
     </div>  
 </div>

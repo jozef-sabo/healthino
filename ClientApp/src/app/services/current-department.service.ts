@@ -11,7 +11,7 @@ export class CurrentDepartmentService {
 
   constructor() { }
   
-  zmenitOddelenie(department:number){
+  zmenitOddelenie(department:any){
     this.currentDepartment.next(department)
   }
 }

@@ -11,7 +11,7 @@ export class CurrentPatientService {
 
   constructor() { }
 
-  changePatient(patient:number){
+  changePatient(patient:any){
     this.currentPatient.next(patient)
   }
 

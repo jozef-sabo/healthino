@@ -1,6 +1,7 @@
+import { CurrentDepartmentService } from './../../services/current-department.service';
+import { CurrentPatientService } from './../../services/current-patient.service';
+import { DepartmentsDataService } from './../../services/departments-data.service';
 import { Router } from '@angular/router';
-import { CurrentPatientService } from '../../current-patient.service';
-import { CurrentDepartmentService } from '../../current-department.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,23 +11,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientsComponent implements OnInit {
 
-  departments = ["Oddelenie č.1","Oddelenie č.2"]
-  patients = ['Barbara Hicks','Shirley Randle','Patricia Taylor','Howard Zielinski','Luis Hernandez']
-  patients_by_department = [['Barbara Hicks','Shirley Randle','Howard Zielinski'],['Patricia Taylor','Luis Hernandez']]
+  departments : any
+  patients : any
+  patients_by_department : any
+  allDepartments : number[] = []
 
-  department! : number;
-  patient! : number;
+  departmentToDisplay! : number[]
+  patient! : number
 
-  constructor(private current_department_service : CurrentDepartmentService, private current_patient_service : CurrentPatientService,private router : Router) { }
+  constructor(private current_department_service : CurrentDepartmentService,
+    private current_patient_service : CurrentPatientService,
+    private _departmentsDataService : DepartmentsDataService,
+    private router : Router) { }
 
   ngOnInit(): void {
-  this.current_department_service.current_department.subscribe(department => this.department = department)
-  this.current_patient_service.current_patient.subscribe(patient => this.patient = patient)
+    this.departments = this._departmentsDataService.getDepartments()
+    this.patients = this._departmentsDataService.getPatients()
+    this.current_department_service.current_department.subscribe(department => this.departmentToDisplay = [department])
+    this.current_patient_service.current_patient.subscribe(patient => this.patient = patient)
+    console.log(this.departmentToDisplay);
+    console.log(this.patients);
+    
+    if (this.departmentToDisplay.length == 1 && this.departmentToDisplay[0] == 0){
+      this.patients.forEach((data:any,index:any) => {
+        this.departmentToDisplay.push(data.departmentID)
+      });
+      this.departmentToDisplay = this.departmentToDisplay.filter((value, index, self) => self.indexOf(value) === index);
+    }
+    console.log(this.departmentToDisplay);
   }
 
-  choosePatient(patientsAvailable:string){
+  choosePatient(patientAvailable:any){
     this.router.navigate(["details"])
-    let patientID = this.patients.indexOf(patientsAvailable)
-    this.current_patient_service.changePatient(patientID)
+    this.current_patient_service.changePatient(patientAvailable)
   }
 }
