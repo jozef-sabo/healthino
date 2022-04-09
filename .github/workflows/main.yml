@@ -37,7 +37,7 @@ jobs:
         run: dotnet publish ./healthino.csproj --output bin/publish --framework net6.0 --no-self-contained
 
       - name: Prepare and copy to staging, deploy to production
-        uses: mdallasanta/ssh-scp-deploy@{version}
+        uses: mdallasanta/ssh-scp-deploy@v1.2.0
         with:
           local: 'bin/publish/*'
           remote: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
