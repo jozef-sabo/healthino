@@ -29,8 +29,6 @@ export class PatientsComponent implements OnInit {
     this.patients = this._departmentsDataService.getPatients()
     this.current_department_service.current_department.subscribe(department => this.departmentToDisplay = [department])
     this.current_patient_service.current_patient.subscribe(patient => this.patient = patient)
-    console.log(this.departmentToDisplay);
-    console.log(this.patients);
     
     if (this.departmentToDisplay.length == 1 && this.departmentToDisplay[0] == 0){
       this.patients.forEach((data:any,index:any) => {
@@ -38,7 +36,6 @@ export class PatientsComponent implements OnInit {
       });
       this.departmentToDisplay = this.departmentToDisplay.filter((value, index, self) => self.indexOf(value) === index);
     }
-    console.log(this.departmentToDisplay);
   }
 
   choosePatient(patientAvailable:any){

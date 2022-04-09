@@ -1,22 +1,20 @@
-import { DetailsComponent } from './components/details/details.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { HistoryComponent } from './components/history/history.component';
-import { DepartmentsComponent } from './components/departments/departments.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
 {
   path : "",
-  component : DepartmentsComponent,
+  loadChildren : () => import('./components/departments/departments.module').then(m => m.DepartmentsModule)
 },
 {
   path : "patients",
-  component : PatientsComponent,
+  loadChildren : () => import('./components/patients/patients.module').then(m => m.PatientsModule)
 },
 {
   path : "details",
-  component : DetailsComponent,
+  loadChildren : () => import('./components/details/details.module').then(m => m.DetailsModule)
 },
 {
   path : "history",

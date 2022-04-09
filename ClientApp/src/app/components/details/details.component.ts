@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
   this.current_patient_service.current_patient.subscribe(patient => this.patient = patient) 
+  
   if (this.patient.id == undefined || 0){
     this.router.navigate([""])
   }
