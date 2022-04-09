@@ -39,11 +39,22 @@ jobs:
       - name: Prepare private key
         run: |
           mkdir -p ~/.ssh/
-          ${{ format('echo "{0}" > ~/.ssh/staging.key', secrets.SERVER_SSH_PRIVATE_KEY) }}
+          echo "$SSH_KEY" > ~/.ssh/staging.key
           chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+          Host staging
+            HostName $SSH_HOST
+            User $SSH_USER
+            IdentityFile ~/.ssh/staging.key
+            StrictHostKeyChecking no
+          END
+        env:
+          SSH_USER: ${{ secrets.SERVER_USER }}
+          SSH_KEY: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+          SSH_HOST: ${{ secrets.SERVER_HOST }}
 
       - name: Prepare staging server
-        run:  ${{ format('ssh -i ~/.ssh/staging.key {0}@{1} "sh {2}/prepare.sh"', secrets.SERVER_USER, secrets.SERVER_HOST, secrets.SERVER_TARGET_DIRECTORY) }}
+        run: ssh staging 'sh ./prepare.sh'
 
       - name: Copy files to staging server
         uses: siva1024/scp-deployer@latest
@@ -55,7 +66,7 @@ jobs:
           target: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
 
       - name: Deploy to production server
-        run:  ${{ format('ssh -i ~/.ssh/staging.key {0}@{1} "sh {2}/deploy.sh"', secrets.SERVER_USER, secrets.SERVER_HOST, secrets.SERVER_TARGET_DIRECTORY) }}
+        run: ssh staging 'sh ./deploy.sh'
         
         
       - name: Remove private key
