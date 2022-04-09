@@ -36,13 +36,14 @@ jobs:
       - name: Publish
         run: dotnet publish ./healthino.csproj --output bin/publish --framework net6.0 --no-self-contained
 
+      - name: Prepare private key
+        run: |
+          mkdir -p ~/.ssh/
+          ${{ format('echo "{0}" > ~/.ssh/staging.key', secrets.SERVER_SSH_PRIVATE_KEY) }}
+          chmod 600 ~/.ssh/staging.key
 
       - name: Prepare staging server
-        uses: JimCronqvist/action-ssh@0.1.1
-        with:
-          hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
-          privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          command: ${{ format('sh {0}/prepare.sh', secrets.SERVER_TARGET_DIRECTORY) }}
+        run:  ${{ format('ssh -i ~/.ssh/staging.key {0}@{1} "sh {2}/prepare.sh"', secrets.SERVER_USER, secrets.SERVER_HOST, secrets.SERVER_TARGET_DIRECTORY) }}
 
       - name: Copy files to staging server
         uses: siva1024/scp-deployer@latest
@@ -54,8 +55,9 @@ jobs:
           target: ${{ format('{0}/staging/', secrets.SERVER_TARGET_DIRECTORY) }}
 
       - name: Deploy to production server
-        uses: JimCronqvist/action-ssh@0.1.1
-        with:
-          hosts: ${{ format('{0}@{1}', secrets.SERVER_USER, secrets.SERVER_HOST) }}
-          privateKey: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
-          command: ${{ format('sh {0}/deploy.sh', secrets.SERVER_TARGET_DIRECTORY) }}
+        run:  ${{ format('ssh -i ~/.ssh/staging.key {0}@{1} "sh {2}/deploy.sh"', secrets.SERVER_USER, secrets.SERVER_HOST, secrets.SERVER_TARGET_DIRECTORY) }}
+        
+        
+      - name: Remove private key
+        run: |
+          rm ~/.ssh/staging.key
