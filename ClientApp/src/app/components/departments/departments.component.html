@@ -1,4 +1,7 @@
 <div id="container">    
+    <div class="title">
+        <h2>Oddelenia</h2>
+    </div>
     <div class="search">
         <form>
             <mat-form-field class="searchFormField">
@@ -13,6 +16,7 @@
     <div id="departments">
         <div class="department" *ngFor="let departmentAvailable of departments" (click)="chooseDepartment(departmentAvailable)">
             <p>{{departmentAvailable.name}}</p>
+            <p class="numberOfPatients"> x pacientov</p>
         </div>   
     </div>  
 </div>

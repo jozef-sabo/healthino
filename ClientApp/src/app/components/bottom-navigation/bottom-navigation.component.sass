@@ -1,4 +1,7 @@
 $accent_color: #CBF7EB
+$shadow1: 0px 1px 16.3px rgba(0, 0, 0, 0.043)
+$shadow2: 0px 22.3px 71.6px rgba(0, 0, 0, 0.067)
+$shadow3: 0px 84px 250px rgba(0, 0, 0, 0.11)
 
 #bottom_navigation_container
     display: grid
@@ -8,16 +11,18 @@ $accent_color: #CBF7EB
     justify-items: center
     position: fixed
     bottom: 0
-    height: 10vh
-    width: 100vw
-    border-radius: 20px 20px 0 0
-    box-shadow: 15px 0 15px 8px rgb(0 0 0 / 3%)
-    background-color: #FFFFFF
+    height: 7%
+    width: 86%
+    left: 7vw
+    bottom: 5vw
+    border-radius: 18px
+    box-shadow: $shadow1, $shadow2, $shadow3
+    background-color: #e3e3e3
     z-index: 3
     button
-        border-radius: 30px
-        height: 90%
-        width: 85%
+        border-radius: 18px
+        height: 75%
+        width: 60%
         background-color: rgba(0,0,0,0)
     .selected
         background-color: $accent_color

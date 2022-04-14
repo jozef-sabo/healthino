@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { HistoryComponent } from './components/history/history.component';
 import { TopNavigationComponent } from './components/top-navigation/top-navigation.component';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -25,4 +26,8 @@ import { TopNavigationComponent } from './components/top-navigation/top-navigati
   providers: [DepartmentsDataService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(iconRegistry: MatIconRegistry) {
+    iconRegistry.setDefaultFontSetClass('material-icons-outlined');
+  }
+}

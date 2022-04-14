@@ -1,10 +1,20 @@
 #patients_container
     display: grid
     grid-auto-flow: row
-    grid-template-rows: 14% 1fr
-    grid-template-areas: "search" "patients"
+    grid-template-rows: 10% 10% 1fr
+    grid-template-areas: "title" "search" "patients"
     height: 100%
     width: 100%
+    overflow-x: hidden
+    .title
+        grid-area: title
+        display: flex
+        justify-content: center
+        align-items: center
+        h2
+            margin: 0
+            font-size: 22px
+            font-weight: 700
     .search
         grid-area: search
         display: flex
@@ -12,20 +22,18 @@
         justify-content: center
         align-items: center
         place-self: center
-        width: fit-content
-        height: fit-content
-        padding: 0.5vh 4vh
+        width: 80vw
+        height: 7vh
+        padding: 0.5vh 5vw
+        border: 1px solid #D8D8D8
         background-color: white
-        border-radius: 22px
-        box-shadow: 0 10px 15px 0 rgba(0,0,0,3%)
+        border-radius: 10px
         form
             width: fit-content
             height: 5vh
             align-items: center
-            ::ng-deep .mat-form-field-underline
-                display: none
         mat-label
-                color: #9D9D9D
+            color: #9D9D9D
     .searchFormField
         width: 66vw
     #patients_list
@@ -36,19 +44,19 @@
         align-items: center
         margin-bottom: 12vh
         .patient
-            height: 8vh
-            width: 90vw
-            background-color: red
-            margin-bottom: 2vh
-            border-radius: 15px
             display: flex
             flex-direction: row
+            height: 6vh
+            width: 80vw
+            padding: 1vh 5vw
+            margin-top: 2vh
             align-items: center
             justify-content: space-between
+            border-radius: 10px
+            border: 1px solid #D8D8D8
             background-color: #FFFFFF
-            box-shadow: 0 10px 15px 8px rgb(0 0 0 / 3%)
             .patient_name
-                margin-left: 6vw
+                font-size: 18px
                 font-weight: 600
                 margin-bottom: 0
             .condition
@@ -56,13 +64,14 @@
                 width: 2vh
                 border-radius: 50%
                 background-color: #A9FF9B
-                margin-right: 6vw
         .patient:hover
             background-color: #f8f8f8
             cursor: pointer
 @media only screen and (min-width: 768px)
     #patients_container
         height: 95%
+        .search
+            width: fit-content
         .searchFormField
             width: 30vw
         #patients_list
@@ -72,11 +81,9 @@
             justify-items: center
             align-self: start
             .patient
-                width: 26vw
-                height: 7vw
+                width: 16vw
+                height: 5vw
                 margin: 4vh
+                padding: 1vh 5vw
                 .patient_name
-                    margin-left: 2vw
-                    font-size: 1.1em
-                .condition
-                    margin-right: 2vw
+                    font-weight: 700
